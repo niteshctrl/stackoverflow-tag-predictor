@@ -13,11 +13,17 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
 ## Exploratory Data Analysis
 
 ## Data Featurization
-### Steps:
+### Steps Used:
 * Split data before vectorization to avoid data leakage.
-* Used Binary Count Vectorizer for defining the presence of a tag in a row of data. This will be the output label in sparse matrix format 
-  * [0 1 0 0 0 0 1 . . . . . .  0 0 0]
-* Used Tf-IDF Vectorizer with 100K max features
+* Used Cross Validation Set as 20% of the entire data as the dataset was faily large and 20% could accomodate good number of datapoints avoiding any bias.
+* Used **Binary Count Vectorizer** for defining the presence of a tag in a row of data. This will be the output label in sparse matrix format 
+  * [0 1 0 0 0 0 1 . . . . . .  0 0 0] where '1' represents the presence of corresponding Tag.
+* Used **Tf-IDF Vectorizer** with 100K max features to vectorize the input features aka text.
+* Used n_gram range = (1,1) as predicting Tags would be enough by a single word.
+ * For example: In title : "Why C++ is faster than python?", we don't need 'Why C++' or 'C++ is' to predict the tag 'C++'.
+
+### Unused features:
+* Defined 'title_weight' as function parameter as titles are more useful in predicting tags considering the word length of 'Title' and 'Body'.
 
 
 ## Model Exploration
@@ -44,5 +50,6 @@ Although the Micro-F1 score of 0.438 looks decent without hyperparameter tuning,
 
 
 ## Hardware Configuration Used:
+* Google Colab Notebook with 25GB RAM and ~100GB Storage Space.
 
 ## References:
