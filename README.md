@@ -6,6 +6,10 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
 * [Introduction](#section1)
 * [Data Featurization](#Data-Featurization)
 * [Model Exploration](#Model-Exploration)
+* [Hardware Configuration](#Hardware-Configuration-Used)
+* [References](#References)
+
+
 ## Data Featurization
 
 
@@ -30,3 +34,8 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
 * Train SVC on 50K datapoints to get **Micro-F1 = 0.438** for 75 Tags without Hyperparameter Tuning.
 
 Although the Micro-F1 score of 0.438 looks decent without hyperparameter tuning, but training only 75 Tags alone took more than 3 Hours which is very costly. Hence terminated Model exploration as non-linear models, though with better results,  will be extermely costly and hence restricting to only to linear models(Logistic Regression).
+
+
+## Hardware Configuration Used:
+
+## References:
