@@ -20,7 +20,7 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
   * [0 1 0 0 0 0 1 . . . . . .  0 0 0] where '1' represents the presence of corresponding Tag.
 * Used **Tf-IDF Vectorizer** with 100K max features to vectorize the input features aka text.
 * Used n_gram range = (1,1) as predicting Tags would be enough by a single word.
- * For example: In title : "Why C++ is faster than python?", we don't need 'Why C++' or 'C++ is' to predict the tag 'C++'.
+  * For example: In title : "Why C++ is faster than python?", we don't need 'Why C++' or 'C++ is' to predict the tag 'C++'.
 
 ### Unused features:
 * Defined 'title_weight' as function parameter as titles are more useful in predicting tags considering the word length of 'Title' and 'Body'.
