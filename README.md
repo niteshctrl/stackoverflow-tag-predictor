@@ -53,3 +53,9 @@ Although the Micro-F1 score of 0.438 looks decent without hyperparameter tuning,
 * Google Colab Notebook with 25GB RAM and ~100GB Storage Space.
 
 ## References:
+https://medium.com/@jorlugaqui/how-to-strip-html-tags-from-a-string-in-python-7cb81a2bbf44
+https://medium.com/@lukei_3514/dealing-with-contractions-in-nlp-d6174300876b
+https://pypi.org/project/pycontractions/
+https://www.analyticsvidhya.com/blog/2019/08/how-to-remove-stopwords-text-normalization-nltk-spacy-gensim-python/
+https://stackoverflow.com/questions/35345761/python-re-split-vs-nltk-word-tokenize-and-sent-tokenize
+
