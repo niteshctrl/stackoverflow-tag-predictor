@@ -4,9 +4,13 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
 
 # Table of Contents:(Testing)
 * [Introduction](#section1)
+* [Data Featurization](#Data-Featurization)
 * [Model Exploration](#Model-Exploration)
+## Data Featurization
+
 
 ## Model Exploration
+### Results
 * Trained Logistic Regression Model with GridSearch to tune Hyperparameters on 500K datapoints and 700 Tags.
 * It gave a **Micro-F1 Score of 0.474** with alpha = 0.01 as Regularization Parameter.
 
