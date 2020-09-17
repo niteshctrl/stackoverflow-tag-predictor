@@ -4,11 +4,13 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
 
 # Table of Contents:(Testing)
 * [Introduction](#section1)
+* [Exploratory Data Analysis](#Exploratory-Data-Analysis)
 * [Data Featurization](#Data-Featurization)
 * [Model Exploration](#Model-Exploration)
 * [Hardware Configuration](#Hardware-Configuration-Used)
 * [References](#References)
 
+## Exploratory Data Analysis
 
 ## Data Featurization
 
