@@ -21,16 +21,37 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
 	
 ## Exploratory Data Analysis
 * Extracted a few rows to view them. It follows that numerals would be of little use in predictions and they will be damaging more than doing good as the population of numerals is very high in Body without significant predictive power.
+
 * The section """<code.>...<./code>""" could be of immense use in predictions as it contains the code of a programming language and it is enough alone to predict the tag(if programing language) but needs to be tested as it could be noisy too owing to very often large codes containing keywords like 'string', 'return', etc which is common to most of the programming languages.
+
 #### Distribution of 'Title Word Length'
 ![Distn of Title Word Length](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/1.png)
 Most of the titles are in the range of 5-10 words as evident from the distribtion plot. Since, the body is composed of both natural text and programming code, we will skip this analysis on 'Body' as codes could be very lengthly and non-meaningful for analysis
+
 #### Number of Tag Count vs Number of Rows
 ![Tag Count Distribution](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/2.png)
 Minimum number of tag associated to a row is 1 and maximum is 5. Most of the rows have 3 tags followed by 2 tags and then 4 tags.
+
 #### Unique Tag count(Frequency of Occurence of each Tag)
 ![Frequency of each tag](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/3.png)
+There are 42048 unique tags in total. Training 42048 models each for a tag will not be an easy task neither scalable too. NOTE: Herefrom, we will be calling c# as Tag 1, java as Tag 2 and so forth in decreasing order of their occurences for ease of plotting.
 
+#### Frequency of Occurence of Tag vs Tag label
+![Freq vs Label](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/4.png)
+The above plot shows highly skewed data i.e. most of the datapoints are covered by a few bunch of Tags whose occurence is quite high. We will investigate further if the less occuring tags can be ommited to reduce the pain of training 42K models.
+
+#### Bar Plot of top 20 tags in descending order of occurence
+![Bar Plot](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/6.png)
+
+#### Cummulative Density Function of tags
+![CDF](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/7.png)
+It follows that:
+![percent conc](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/8.png)
+Just 4699 tags of 42K cover a whopping 90% of the data!!! Training additional 37K models to cover just 10% of the data will be too expensive and we will be ommiting this during modelling.
+
+#### Top 30 Tag strings(Cell) by their frequency of occurence
+![top30](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/9.png)
+Observe that most occuring tags cell are of word(tag) length 1 and hence label(tag) dependency is something which can be ignored in this data as the tags are fairly independent.
 
 
 ## Text Preprocessing
