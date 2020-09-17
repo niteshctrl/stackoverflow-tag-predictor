@@ -23,7 +23,7 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
 * Extracted a few rows to view them. It follows that numerals would be of little use in predictions and they will be damaging more than doing good as the population of numerals is very high in Body without significant predictive power.
 * The section """<code.>...<./code>""" could be of immense use in predictions as it contains the code of a programming language and it is enough alone to predict the tag(if programing language) but needs to be tested as it could be noisy too owing to very often large codes containing keywords like 'string', 'return', etc which is common to most of the programming languages.
 #### * Distribution of 'Title Word Length'
-!https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/1.png
+![Distn of Title Word Length](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/1.png)
 
 
 ## Text Preprocessing
