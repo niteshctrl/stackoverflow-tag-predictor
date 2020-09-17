@@ -2,7 +2,7 @@
 Predicting tags on StackOverflow from the 'Title' of the question using classical Machine Learning Models
 
 
-# Table of Contents:(Testing)
+# Table of Contents:
 * [Introduction](#Introduction)
 * [Data Cleaning](#Data-Cleaning)
 * [Exploratory Data Analysis](#Exploratory-Data-Analysis)
