@@ -13,6 +13,11 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
 ## Exploratory Data Analysis
 
 ## Data Featurization
+### Steps:
+* Split data before vectorization to avoid data leakage.
+* Used Binary Count Vectorizer for defining the presence of a tag in a row of data. This will be the output label in the format
+                                              [0 1 0 0 0 0 1 0 0 0]
+* Used Tf-IDF Vectorizer with 100K max features
 
 
 ## Model Exploration
