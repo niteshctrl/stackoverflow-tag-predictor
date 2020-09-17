@@ -7,11 +7,29 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
 * [Exploratory Data Analysis](#Exploratory-Data-Analysis)
 * [Data Featurization](#Data-Featurization)
 * [Model Exploration](#Model-Exploration)
+* [Areas of Improvement](#Areas-of-Improvement)
 * [Hardware Configuration](#Hardware-Configuration-Used)
 * [References](#References)
 
 ## Exploratory Data Analysis
 
+
+## Text Preprocessing
+* General tasks performed:
+  1. HTML tags Removal
+  2. Punctation Removal
+  3. Stopwords Removal
+  4. Stemming(Used SnowBall Stemmer: This also converts the tokens to lowercase).
+  5. Expanding Contractions
+  6. Removed Numerals from 'Body'
+  
+* Specific to this project:
+  1. Repeated Uppercase tokens to increase their weightage.
+				* Why?
+						* We generally tend to write the keyowords in uppercase on stackoverflow for better visibility.
+								Ex - HTML vs html, CSS vs css, C vs c, PHP vs php, and the list goes on. These are the keywords that are to be predicted and hence more weightage.
+								
+								
 ## Data Featurization
 ### Steps Used:
 * Split data before vectorization to avoid data leakage.
@@ -23,7 +41,8 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
   * For example: In title : "Why C++ is faster than python?", we don't need 'Why C++' or 'C++ is' to predict the tag 'C++'.
 
 ### Unused features:
-* Defined 'title_weight' as function parameter as titles are more useful in predicting tags considering the word length of 'Title' and 'Body'.
+* Defined 'title_weight' as function parameter because titles are more useful in predicting tags considering the word length of 'Title' vs 'Body'.
+* Vectorizing both Title and Body and merging them later might be more beneficial as this will increase the dimensionality and sparsity of data as opposed to merging first and then vectorizing. But then, merging them first will enable us to put more weight on the Title part than the Body which could be positive point for the models accuracy.
 
 
 ## Model Exploration
@@ -47,6 +66,9 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
 * Train SVC on 50K datapoints to get **Micro-F1 = 0.438** for 75 Tags without Hyperparameter Tuning.
 
 Although the Micro-F1 score of 0.438 looks decent without hyperparameter tuning, but training only 75 Tags alone took more than 3 Hours which is very costly. Hence terminated Model exploration as non-linear models, though with better results,  will be extermely costly and hence restricting to only to linear models(Logistic Regression).
+
+
+## Areas of Improvement:
 
 
 ## Hardware Configuration Used:
