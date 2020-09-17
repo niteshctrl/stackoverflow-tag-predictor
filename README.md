@@ -22,10 +22,14 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
 ## Exploratory Data Analysis
 * Extracted a few rows to view them. It follows that numerals would be of little use in predictions and they will be damaging more than doing good as the population of numerals is very high in Body without significant predictive power.
 * The section """<code.>...<./code>""" could be of immense use in predictions as it contains the code of a programming language and it is enough alone to predict the tag(if programing language) but needs to be tested as it could be noisy too owing to very often large codes containing keywords like 'string', 'return', etc which is common to most of the programming languages.
-* **Distribution of 'Title Word Length'**
+#### Distribution of 'Title Word Length'
 ![Distn of Title Word Length](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/1.png)
 Most of the titles are in the range of 5-10 words as evident from the distribtion plot. Since, the body is composed of both natural text and programming code, we will skip this analysis on 'Body' as codes could be very lengthly and non-meaningful for analysis
-
+#### Number of Tag Count vs Number of Rows
+![Tag Count Distribution](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/2.png)
+Minimum number of tag associated to a row is 1 and maximum is 5. Most of the rows have 3 tags followed by 2 tags and then 4 tags.
+#### Unique Tag count(Frequency of Occurence of each Tag)
+![Frequency of each tag](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/3.png)
 
 
 
