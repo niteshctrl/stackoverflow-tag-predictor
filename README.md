@@ -4,13 +4,21 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
 
 # Table of Contents:(Testing)
 * [Introduction](#section1)
+* [Data Cleaning](#Data-Cleaning)
 * [Exploratory Data Analysis](#Exploratory-Data-Analysis)
+* [Text Preprocessing](#Text-Preprocessing)
 * [Data Featurization](#Data-Featurization)
 * [Model Exploration](#Model-Exploration)
 * [Areas of Improvement](#Areas-of-Improvement)
 * [Hardware Configuration](#Hardware-Configuration-Used)
 * [References](#References)
 
+## Data Cleaning
+* The data contains 6M datapoints aka rows in total.
+* Out of which 1.8M were duplicates. Removing them left 4.2M non-duplicate datapoints which is massive ~30% reduction of data!!
+* Seven rows had NULL values in 'Tags' column. Strangely, all of the 'Title' of these seven rows had keywords like 'NULL' or 'Null Objects' with questions like "What is the difference between NULL and '0'?". I proceeded to check if 'NULL' is a tag in the dataset as string but negative. Finally, I decided to remove these rows as 7 out of 4.2M won't make much of a difference.
+
+	
 ## Exploratory Data Analysis
 
 
@@ -26,7 +34,7 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
 * Specific to this project:
   1. Repeated Uppercase tokens to increase their weightage.
   * Why?
-  * We generally tend to write the keyowords in uppercase on stackoverflow for better visibility.
+   We generally tend to write the keyowords in uppercase on stackoverflow for better visibility.
   Ex - HTML vs html, CSS vs css, C vs c, PHP vs php, and the list goes on. These are the keywords that are to be predicted and hence more weightage.
 								
 								
