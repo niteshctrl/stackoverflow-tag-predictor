@@ -3,8 +3,8 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
 
 
 # Table of Contents:(Testing)
-[Introduction](#section1)
-[Model Exploration](#Model-Exploration)
+* [Introduction](#section1)
+* [Model Exploration](#Model-Exploration)
 
 ## Model Exploration
 * Trained Logistic Regression Model with GridSearch to tune Hyperparameters.
