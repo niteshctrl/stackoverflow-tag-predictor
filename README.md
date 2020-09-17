@@ -3,15 +3,42 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
 
 
 # Table of Contents:(Testing)
-* [Introduction](#section1)
+* [Introduction](#Introduction)
 * [Data Cleaning](#Data-Cleaning)
 * [Exploratory Data Analysis](#Exploratory-Data-Analysis)
 * [Text Preprocessing](#Text-Preprocessing)
 * [Data Featurization](#Data-Featurization)
 * [Model Exploration](#Model-Exploration)
-* [Areas of Improvement](#Areas-of-Improvement)
 * [Hardware Configuration](#Hardware-Configuration-Used)
 * [References](#References)
+
+
+## Introduction
+#### Task:
+Predict the tags (a.k.a. keywords), given only the question text and its title. The dataset contains content from disparate stack exchange sites, containing a mix of both technical and non-technical questions.
+
+#### Evaluation Metric:
+The evaluation metric for this project is Mean F1-Score. The F1 score, commonly used in information retrieval, measures accuracy using the statistics precision P and recall R. Precision is the ratio of true positives (TP) to all predicted positives (TP + FP). Recall is the ratio of true positives to all actual positives (TP + FN). The F1 score is given by:
+
+> F1=2PR / (P + R)
+
+The F1 metric weights recall and precision equally, and a good retrieval algorithm will maximize both precision and recall simultaneously. Thus, moderately good performance on both will be favored over extremely good performance on one and poor performance on the other.
+
+The tag predicted must be an exact match, regardless of whether the tags are synonyms.
+
+**Why aren't synonyms counted?**
+Giving out a list of candidate synonyms is a potential source of leakage
+Synonyms are subjective, and there are "subjectively many" synonyms for a given tag
+Equally penalized for predicting a synonym of a correct tag, so the task can be framed as not only predicting a tag, but also modeling the distribution(s) of potential synonyms
+
+**Data Description:**
+Train.csv contains 4 columns: Id,Title,Body,Tags
+
+	1. Id - Unique identifier for each question
+	2. Title - The question's title
+	3. Body - The body of the question
+	4. Tags - The tags associated with the question (all lowercase, should not contain tabs '\t' or ampersands '&')
+![Data Overview](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/11.png)
 
 ## Data Cleaning
 * The data contains 6M datapoints aka rows in total.
@@ -26,18 +53,22 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
 
 #### Distribution of 'Title Word Length'
 ![Distn of Title Word Length](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/1.png)
+
 Most of the titles are in the range of 5-10 words as evident from the distribtion plot. Since, the body is composed of both natural text and programming code, we will skip this analysis on 'Body' as codes could be very lengthly and non-meaningful for analysis
 
 #### Number of Tag Count vs Number of Rows
 ![Tag Count Distribution](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/2.png)
+
 Minimum number of tag associated to a row is 1 and maximum is 5. Most of the rows have 3 tags followed by 2 tags and then 4 tags.
 
 #### Unique Tag count(Frequency of Occurence of each Tag)
 ![Frequency of each tag](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/3.png)
+
 There are 42048 unique tags in total. Training 42048 models each for a tag will not be an easy task neither scalable too. NOTE: Herefrom, we will be calling c# as Tag 1, java as Tag 2 and so forth in decreasing order of their occurences for ease of plotting.
 
 #### Frequency of Occurence of Tag vs Tag label
 ![Freq vs Label](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/4.png)
+
 The above plot shows highly skewed data i.e. most of the datapoints are covered by a few bunch of Tags whose occurence is quite high. We will investigate further if the less occuring tags can be ommited to reduce the pain of training 42K models.
 
 #### Bar Plot of top 20 tags in descending order of occurence
@@ -45,12 +76,15 @@ The above plot shows highly skewed data i.e. most of the datapoints are covered 
 
 #### Cummulative Density Function of tags
 ![CDF](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/7.png)
+
 It follows that:
 ![percent conc](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/8.png)
+
 Just 4699 tags of 42K cover a whopping 90% of the data!!! Training additional 37K models to cover just 10% of the data will be too expensive and we will be ommiting this during modelling.
 
 #### Top 30 Tag strings(Cell) by their frequency of occurence
 ![top30](https://github.com/niteshctrl/stackoverflow-tags/blob/master/images/9.png)
+
 Observe that most occuring tags cell are of word(tag) length 1 and hence label(tag) dependency is something which can be ignored in this data as the tags are fairly independent.
 
 
@@ -108,13 +142,13 @@ Observe that most occuring tags cell are of word(tag) length 1 and hence label(t
 Although the Micro-F1 score of 0.438 looks decent without hyperparameter tuning, but training only 75 Tags alone took more than 3 Hours which is very costly. Hence terminated Model exploration as non-linear models, though with better results,  will be extermely costly and hence restricting to only to linear models(Logistic Regression).
 
 
-## Areas of Improvement:
-
-
 ## Hardware Configuration Used:
 * Google Colab Notebook with 25GB RAM and ~100GB Storage Space.
 
+
 ## References:
+Data Source: https://www.kaggle.com/c/facebook-recruiting-iii-keyword-extraction
+
 1. https://medium.com/@jorlugaqui/how-to-strip-html-tags-from-a-string-in-python-7cb81a2bbf44
 2. https://medium.com/@lukei_3514/dealing-with-contractions-in-nlp-d6174300876b
 3. https://pypi.org/project/pycontractions/
