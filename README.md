@@ -25,9 +25,9 @@ Predicting tags on StackOverflow from the 'Title' of the question using classica
   
 * Specific to this project:
   1. Repeated Uppercase tokens to increase their weightage.
-				* Why?
-						* We generally tend to write the keyowords in uppercase on stackoverflow for better visibility.
-								Ex - HTML vs html, CSS vs css, C vs c, PHP vs php, and the list goes on. These are the keywords that are to be predicted and hence more weightage.
+  * Why?
+  * We generally tend to write the keyowords in uppercase on stackoverflow for better visibility.
+  Ex - HTML vs html, CSS vs css, C vs c, PHP vs php, and the list goes on. These are the keywords that are to be predicted and hence more weightage.
 								
 								
 ## Data Featurization
